@@ -1,0 +1,35 @@
+<?php
+/**
+ * @file
+ * A custom module to fix a MailSystem/SMTP bug in Pantheon websites
+ */
+
+/**
+ * Implements hook_help().
+ *
+ * Displays help and module information.
+ *
+ * @param path
+ *   Which path of the site we're using to display help
+ * @param arg
+ *   Array that holds the current path as returned from arg() function
+ */
+	function Crim_custom_help($path, $arg) {
+		switch ($path) {
+			case "admin/help#pantheon_email_fix":
+				$output = t("<p>A custom module to fix a MailSystem/SMTP bug in Pantheon websites</p>");
+				return $output;
+			break;
+			case 'admin/config/system/pantheon_email_fix':
+				if (module_exists('help')) {
+					$help_text =  t("More help can be found at <a href=\"!help\">pantheon_email_fix help</a>.", array('!help' => url('admin/help/pantheon_email_fix')));
+				}
+				else {
+					$help_text = '';
+				}
+				$output = "<p>" . t('A custom module to fix a MailSystem/SMTP bug in Pantheon websites.This Fixes the site-crashing bug in Mail System referenced here: <a href="https://pantheon.io/docs/email/#troubleshooting">https://pantheon.io/docs/email/#troubleshooting</a>. It generates a class in Mail System called "MimeMailSystem__SmtpMailSystem." ') . " $help_text</p>";
+				return $output;
+			break;
+			}
+	}
+

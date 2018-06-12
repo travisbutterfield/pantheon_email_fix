@@ -1,0 +1,6 @@
+name = Pantheon Email Fix
+description = A custom module to fix a MailSystem/SMTP bug in Pantheon websites
+core = 7.x
+
+;including this file provides a fix for mailsystem/smtp problem on Pantheon
+files[] = includes/MimeMailSystem__SmtpMailSystem.mail.inc
